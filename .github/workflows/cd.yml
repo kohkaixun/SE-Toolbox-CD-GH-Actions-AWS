@@ -27,6 +27,6 @@ jobs:
                   aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
                   application_name: AddressBookApp
                   environment_name: AddressBookApp-env
-                  version_label: ${{ env.VERSION }}
+                  version_label: ver-${{ github.sha }}
                   region: ap-southeast-1
                   deployment_package: address-book-app.zip
