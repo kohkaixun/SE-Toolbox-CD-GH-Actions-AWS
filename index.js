@@ -26,7 +26,7 @@ app.use('/api/addresses', require('./routes/addressRoutes')) // add
 
 // optional
 app.get('/', (req, res) => {
-  res.status(200).json("Welcome to Address Book with CD! 佛祖保佑，永无bug！")
+  res.status(200).json("Welcome to Address Book with CD! 我佛慈悲，佛祖保佑，永无bug！")
 })
 
 app.listen(port, () => {
