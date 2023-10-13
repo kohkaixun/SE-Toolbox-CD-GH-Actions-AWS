@@ -20,8 +20,6 @@ jobs:
               run: zip -r address-book.zip config controllers models routes index.js package.json .env
             - name: Get Node.js version
               run: echo "VERSION=$(node -p 'require("./package.json").version')" >> "$GITHUB_ENV"
-            - name: Update Elastic Beanstalk Environment
-              run: aws elasticbeanstalk update-environment --environment-name AddressBook-env --version-label ver-${{ github.sha }}
             - name: Deploy to EB
               uses: einaregilsson/beanstalk-deploy@v21
               with:
@@ -29,6 +27,6 @@ jobs:
                   aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
                   application_name: AddressBook
                   environment_name: AddressBook-env
-                  version_label: ver-${{ github.sha }}
+                  version_label: "ver-997dbde55e1788fc5a00590f9caedec3314ec0dc"
                   region: ap-southeast-1
                   deployment_package: address-book.zip
