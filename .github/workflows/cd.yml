@@ -23,6 +23,7 @@ jobs:
             - name: Update Elastic Beanstalk Environment
               run: |
                   aws elasticbeanstalk update-environment \
+                    --environment-name AddressBook-env \
                     --version-label ver-${{ github.sha }}
                   echo "Elastic Beanstalk environment updated to use version ver-${{ github.sha }}"
             - name: Deploy to EB
