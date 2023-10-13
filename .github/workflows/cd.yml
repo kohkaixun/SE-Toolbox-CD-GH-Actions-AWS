@@ -20,6 +20,11 @@ jobs:
               run: zip -r address-book.zip config controllers models routes index.js package.json .env
             - name: Get Node.js version
               run: echo "VERSION=$(node -p 'require("./package.json").version')" >> "$GITHUB_ENV"
+            - name: Update Elastic Beanstalk Environment
+              run: |
+                  aws elasticbeanstalk update-environment \
+                    --version-label ver-${{ github.sha }}
+                  echo "Elastic Beanstalk environment updated to use version ver-${{ github.sha }}"
             - name: Deploy to EB
               uses: einaregilsson/beanstalk-deploy@v21
               with:
